@@ -21,21 +21,27 @@ class Solution {
         
         if(root == null) return result;
         
-        stack.push(root);
+        stack.push(root); //1st
         
         while(!stack.empty()){
-            TreeNode curr = stack.pop();
-            result.add(0, curr.val); //add curr value at 0th index, shift the curr value all the way to the back 
+            TreeNode curr = stack.pop(); //2nd
+            result.add(0, curr.val); //3rd 
             
-            if(curr.left != null){
+            if(curr.left != null){ //4th
                 stack.push(curr.left);
             }
-            if(curr.right != null){
+            if(curr.right != null){ //5th
                 stack.push(curr.right);
             }
         }
         return result;
     }
 }
-After we done the processing, the last thing we actually add is the root value.
-Add left node into stack first, follow by right node then last is root
+
+1st : push root into stack
+2nd : pop the root out
+3rd : add the root value at 0th index of result array list 
+      *follow by adding curr value at 1th index, shift the curr value all the way to the back, so root is at 1th index now while curr value at 0th index 
+4th : push left node into stack
+5th : push right node into stack
+result : left -> right -> root
