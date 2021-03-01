@@ -1,0 +1,41 @@
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public List<Integer> postorderTraversal(TreeNode root) {
+        
+        List<Integer> result = new ArrayList<>();
+        Stack<TreeNode> stack = new Stack<>();
+        
+        if(root == null) return result;
+        
+        stack.push(root);
+        
+        while(!stack.empty()){
+            TreeNode curr = stack.pop();
+            result.add(0, curr.val); //add curr value at 0th index, shift the curr value all the way to the back 
+            
+            if(curr.left != null){
+                stack.push(curr.left);
+            }
+            if(curr.right != null){
+                stack.push(curr.right);
+            }
+        }
+        return result;
+    }
+}
+After we done the processing, the last thing we actually add is the root value.
+Add left node into stack first, follow by right node then last is root
