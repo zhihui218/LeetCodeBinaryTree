@@ -23,14 +23,14 @@ class Solution {
         
         if(root == null) return result;
         
-        queue.add(root);
+        queue.add(root); //1st
         
         while(!queue.isEmpty()){
-            int size = queue.size();
-            List<Integer> currLevel = new ArrayList<>();
-            for(int i=0; i<size; i++){
-                TreeNode curr = queue.remove();
-                currLevel.add(curr.val);
+            int size = queue.size(); //2nd
+            List<Integer> currLevel = new ArrayList<>(); //3rd
+            for(int i=0; i<size; i++){ //4th
+                TreeNode curr = queue.remove(); 
+                currLevel.add(curr.val); //5th
                 if(curr.left != null){
                     queue.add(curr.left);
                 }
@@ -38,10 +38,20 @@ class Solution {
                     queue.add(curr.right);
                 }
             }
-            result.add(currLevel);
+            result.add(currLevel); //6th
         }
         return result;
     }
 }
 
 YouTube : https://youtu.be/XZnWETlZZ14
+Use queue to print out(remove()) the nodes for each level then store into currLevel(array list), add the currLevel into the result
+Queue will hode the treeNode
+1st : when we have root, just simply add the root into the queue
+2nd : size = total number of nodes we have in a single level
+    exp: first iteration : 1 node (root)
+         second iteration : 2 nodes (left child & right child of the root)
+3rd : for every single level, make a list to store all the nodes values in that current level         
+4th : how many nodes we have to process during the current iteration in the for loop? that is i < size
+5th : add the node value to currLevel list
+6th : add the currLevel list which contains all of the processed nodes into the list of list (result)
