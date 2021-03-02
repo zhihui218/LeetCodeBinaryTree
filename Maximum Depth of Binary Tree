@@ -10,8 +10,7 @@ class Solution {
     }
 }
 Count from bottom to top
-Movie Theater Analogy
-YouTube : https://youtu.be/D2cFSDfg0So
+
 Let's say you have a binary tree with only the left side and a height/max-depth of 3.
 1
 / 
@@ -27,3 +26,10 @@ Let's say you have a binary tree with only the left side and a height/max-depth 
 1 finally returns 1+ max(2,0) = 3 (height/max-depth of the tree)
 
 the return statement inside a recursively called function basically "passes the value up" to the function which called it
+
+Movie Theater Analogy
+YouTube : https://youtu.be/D2cFSDfg0So
+Let's say at first we dont know which row we are in, but we know we are 1 row higher than the person in front of me in the movie theater
+So I tap the person in front of me and ask what row are you in, that person may not in the first row, so he asks the person in front of him, and the chain continues
+Until we reach the first row, the first row person know he is in the first row, then he tells the second row person, chain continues and get to the row we are in
+Finally we have to plus 1 because we are always 1 row higher
