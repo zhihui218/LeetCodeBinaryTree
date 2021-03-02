@@ -1,0 +1,27 @@
+class Solution {
+    public int maxDepth(TreeNode root) {
+        
+        if(root == null) return 0;
+        
+        int left = maxDepth(root.left);
+        int right = maxDepth(root.right);
+        
+        return Math.max(left, right) + 1;
+    }
+}
+Count from bottom to top
+Let's say you have a binary tree with only the left side and a height/max-depth of 3.
+1
+/ 
+2 
+/  
+3
+
+1: recursive call on 2
+2: recursive call on 3
+3: recursive call on null
+3 returns 1+max(0,0) = 1
+2 returns 1+ max(1,0) = 2
+1 finally returns 1+ max(2,0) = 3 (height/max-depth of the tree)
+
+the return statement inside a recursively called function basically "passes the value up" to the function which called it
