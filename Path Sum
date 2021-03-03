@@ -30,5 +30,5 @@ class Solution {
 }
 1st : First, start from root, we use the targetSum minus the root value, repeat the process for LST and RST until we reach the leaf node of LST and RST and our targetSum equals 0,
       we can conclude that there is a path
-2nd : we recursively call the method which every iteration, we will repeat the process which is targetSum minus root value for LST and RST, 
+2nd : we recursively call the method which we traverse the LST and RST, we repeat the process which is targetSum minus root value for LST and RST, 
       if there is a path for LST or RST, return true      
