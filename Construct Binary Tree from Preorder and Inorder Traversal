@@ -1,0 +1,40 @@
+class Solution {
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
+        
+        if(preorder == null || inorder == null || preorder.length != inorder.length){
+            return null;
+        }
+        
+        return builder(0, 0, inorder.length-1, preorder, inorder); //1st
+    }
+    
+    private TreeNode builder(int preStart, int inStart, int inEnd, int[] preorder, int[] inorder){
+        
+        if(preStart > preorder.length-1 || inStart > inEnd) return null;
+        
+        TreeNode node = new TreeNode(preorder[preStart]); //2nd 
+        
+        //3rd
+        int inIndex = 0;
+        for(int i=0; i<=inEnd; i++){ 
+            if(inorder[i] == node.val){ 
+                inIndex = i; 
+            }
+        }
+        
+        node.left = builder(preStart + 1, inStart, inIndex-1, preorder, inorder); //4th
+        node.right = builder(preStart + inIndex - inStart + 1, inIndex + 1, inEnd, preorder, inorder); //5th
+        
+        return node;
+    }
+}
+Example : preorder = [3,9,20,15,7], inorder = [9,3,15,20,7]
+1st : preStart is always 0, inStart = 0, inEnd = inorder.length-1
+2nd : find root from preorder, which is 0th index
+3rd : find root index in inorder array, i = 1
+4th : find LST
+      *to find the index of left child node in LST in preorder array -> preStart + 1 
+      *to find all the LST nodes in inorder array, which start from 0th index to one index before the root index -> inStart, inIndex-1
+5th : find RST
+      *to find the index of right child node in RST in preorder array -> preStart + all LST stuffs (inIndex - inStart) + 1
+      *to find all the RST nodes in inorder array, which start from 1 index behind the root index till the last index of inorder array
