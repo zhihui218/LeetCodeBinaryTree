@@ -26,6 +26,12 @@ class Solution {
 Example: inorder = [9,3,15,20,7], postorder = [9,15,7,20,3]
 1st : root will be the last node in postorder array , 3
 2nd : find the index of root node in inorder array, i = 3, count from back to front, 0 -> 3
+      *root node = 3 
+      *i = 0
+      *first iteration, inorder[4] != postorder[4], i.e 7 != 3, i = 1
+      *second iteration, inorder[3] != postorder[4], i.e 20 != 3, i = 2
+      *third iteration, inorder[2] != postorder[4], i.e 15 != 3, i = 3
+      *fourth iteration, inorder[1] == postorder[4], break while loop, i=3
 3rd : building LST, pass inorder array, postorder array, start index, last index, the current node index in the postorder array
       *start index = 0, first left child will be at the left in inorder array, i.e 0th index
       *last index = one index before the root index, in this example, is 0th index 
@@ -33,4 +39,4 @@ Example: inorder = [9,3,15,20,7], postorder = [9,15,7,20,3]
 4th : building RST, pass inorder array, postorder array, start index, last index, the current node index in the postorder array
       *start index = root index + 1, i.e 2nd index
       *last index = inorder.length-1, i.e 4th index 
-      *current node index = i.e 3 (which point to node 20) 
+      *current node index = one index before the root node in postorder array, i.e 3 (which point to node 20) 
