@@ -1,0 +1,36 @@
+class Solution {
+    public TreeNode buildTree(int[] inorder, int[] postorder) {
+
+        if(inorder == null || postorder == null || inorder.length != postorder.length) return null;
+         
+        return builder(inorder, postorder, 0, inorder.length-1, postorder.length-1);
+    }
+    
+    private TreeNode builder(int[] inorder, int[] postorder, int start, int last, int index){
+        
+        if(start > last) return null;
+        
+        TreeNode node = new TreeNode(postorder[index]); //1st
+        
+        int i = 0;
+        while(inorder[last - i] != postorder[index]){ //2nd
+            i++; 
+        } 
+        
+        node.left = builder(inorder, postorder, start, last-i-1, index-i-1); //3rd
+        node.right = builder(inorder, postorder, last-i+1, last, index-1); //4th
+        
+        return node;
+    }
+}
+Example: inorder = [9,3,15,20,7], postorder = [9,15,7,20,3]
+1st : root will be the last node in postorder array , 3
+2nd : find the index of root node in inorder array, i = 3, count from back to front, 0 -> 3
+3rd : building LST, pass inorder array, postorder array, start index, last index, the current node index in the postorder array
+      *start index = 0, first left child will be at the left in inorder array, i.e 0th index
+      *last index = one index before the root index, in this example, is 0th index 
+      *current node index = i.e 0th index 
+4th : building RST, pass inorder array, postorder array, start index, last index, the current node index in the postorder array
+      *start index = root index + 1, i.e 2nd index
+      *last index = inorder.length-1, i.e 4th index 
+      *current node index = i.e 3 (which point to node 20) 
