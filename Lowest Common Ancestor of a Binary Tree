@@ -22,3 +22,5 @@ Output: 3
 3rd : search p and q from the RST, will return p or q if found, otherwise, return null
 4th : if found p and q from LST and RST, the LCA will be the root
 5th : if found both p & q in LST, return left, otherwise, found both p and q in RST, return right
+YouTube : https://youtu.be/uKhLoNaG9LI
+          https://youtu.be/Z6d-UM7fDMM
