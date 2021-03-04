@@ -57,6 +57,7 @@ public class Codec {
         *Source : https://www.geeksforgeeks.org/arrays-aslist-method-in-java-with-examples/
 5th : poll() method : returns and removes the element at the front the container, deletes the element in the container. 
                       The method does not throws an exception when the Queue is empty, it returns null instead.
+        *Source : https://www.geeksforgeeks.org/queue-poll-method-in-java/
 6th : if the value of String pass in equals null, the node will be null
 7th : otherwise, the value will be the root node value. Since value is String, we need to convert String to integer
 8th : recursively call the function for LST
