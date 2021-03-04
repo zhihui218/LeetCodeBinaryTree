@@ -1,0 +1,66 @@
+public class Codec {
+
+    // Encodes a tree to a single string.
+    public String serialize(TreeNode root) {
+        
+        StringBuilder sb = new StringBuilder();
+        serialHelper(root, sb);
+        
+        return sb.toString(); //convert StringBuilder to String
+        
+    }
+
+    private void serialHelper(TreeNode root, StringBuilder sb){
+        
+        if(root == null){
+            sb.append("null").append(","); //1st
+        }
+        else{
+            sb.append(root.val).append(",");
+            serialHelper(root.left, sb); //2nd
+            serialHelper(root.right, sb); //3rd
+        }
+        
+    }
+    
+    // Decodes your encoded data to tree.
+    public TreeNode deserialize(String data) {
+        
+        Queue <String> q = new LinkedList<>();
+        q.addAll(Arrays.asList(data.split(","))); //4th
+        
+        return deserialHelper(q);
+        
+    }
+    
+    private TreeNode deserialHelper(Queue<String> q){
+        
+        String value = q.poll(); //5th
+        if(value.equals("null")){ //6th
+            return null; 
+        }
+        else{
+            TreeNode root = new TreeNode(Integer.parseInt(value)); //7th
+            root.left = deserialHelper(q); //8th
+            root.right = deserialHelper(q); //9th
+            return root;
+        }
+    }
+}
+1st : add "," after one element in the String for spliting the String during decoding
+2nd : recursively call the function for LST
+3rd : recursively call the function for RST
+4th : add all the elements in the String after spliting them by ","
+     *addAll() method : to inserts all the elements of the Collection, insertion of element is in same order as returned by the collections iterator. Normally pass ArrayList as parameter
+        *Source : https://www.geeksforgeeks.org/concurrentlinkedqueue-addall-method-in-java/
+     *Arrays.asList() method : to return a fixed-size list backed by the specified array. 
+        *Source : https://www.geeksforgeeks.org/arrays-aslist-method-in-java-with-examples/
+5th : poll() method : returns and removes the element at the front the container, deletes the element in the container. 
+                      The method does not throws an exception when the Queue is empty, it returns null instead.
+6th : if the value of String pass in equals null, the node will be null
+7th : otherwise, the value will be the root node value. Since value is String, we need to convert String to integer
+8th : recursively call the function for LST
+9th : recursively call the function for RST
+
+YouTube : https://youtu.be/plddsldeckc
+          https://youtu.be/suj1ro8TIVY
