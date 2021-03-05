@@ -55,3 +55,16 @@ Queue will hode the treeNode
 4th : how many nodes we have to process during the current iteration in the for loop? that is i < size
 5th : add the node value to currLevel list
 6th : add the currLevel list which contains all of the processed nodes into the list of list (result)
+
+Steps for solving BFS
+1. create a new queue and result list(list of list)
+2. if got root, add root into the queue
+3. while loop (queue != empty)
+4.  declare and initialise int size = queue.size()
+5.  create a new arraylist to store current level node
+6.      for loop(i < size)
+7.          remove the element store in queue 
+8.          add the element into the current level arraylist
+9.          check for LST and RST, if not empty, add to the queue
+10.     add the current level list into the result list
+11. return result
